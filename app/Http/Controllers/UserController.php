@@ -10,18 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        //tambah data user dgn eloquent model
-        $data = [
-            'level_id' => 2,
-            'username' => 'manager_tiga',
-            'nama' => 'Manager 3',
-            'password' => Hash::make('12345')
-        ];
-        
-        //insert data
-        UserModel::create($data);
-
-        $user = UserModel::all(); // ambil semua data dari tabel m_user
-        return view('user', ['data' => $user]);
+        $user = UserModel::find(1); // ambil data user
+        return view('user', ['data' => $user]); //kirim data user ke view
     }
 }
