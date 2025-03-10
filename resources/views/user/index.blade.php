@@ -58,11 +58,11 @@
             // serverSide: true, jika ingin menggunakan server side processing 
             serverSide: true,      
             ajax: { 
-                    "url": "{{ url('user/list') }}", 
-                    "dataType": "json", 
-                    "type": "POST" 
-                    "data": function (d) {
-                        d.level_id = $('#level_id').val();
+                "url": "{{ url('user/list') }}", 
+                "dataType": "json", 
+                "type": "POST", 
+                "data": function (d) {
+                d.level_id = $('#level_id').val();
                 }
             }, 
             columns: [ 
@@ -72,25 +72,29 @@
                     className: "text-center", 
                     orderable: false, 
                     searchable: false     
-                    },{ 
+                },
+                { 
                     data: "username",                
                     className: "", 
                     // orderable: true, jika ingin kolom ini bisa diurutkan  
                     orderable: true,     
                     // searchable: true, jika ingin kolom ini bisa dicari 
                     searchable: true     
-                    },{ 
+                },
+                { 
                     data: "nama",                
                     className: "", 
                     orderable: true,     
                     searchable: true      
-                    },{ 
+                },
+                { 
                     // mengambil data level hasil dari ORM berelasi 
                     data: "level.level_nama",                
                     className: "", 
                     orderable: false,     
                     searchable: false     
-                    },{ 
+                },
+                { 
                     data: "aksi",                
                     className: "", 
                     orderable: false,     
