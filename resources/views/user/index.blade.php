@@ -67,13 +67,7 @@
             // serverSide: true, jika ingin menggunakan server side processing 
             serverSide: true,      
             ajax: { 
-                "url": "{{ url('user/list') }}", function modalAction(url = '') { 
-       $('#myModal').load(url, function() { 
-         $('#myModal').modal('show'); 
-       });
-     } 
-     
-     var dataUser;
+                "url": "{{ url('user/list') }}",
                 "dataType": "json", 
                 "type": "POST", 
                 "data": function (d) {
