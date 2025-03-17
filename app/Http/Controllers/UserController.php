@@ -177,6 +177,14 @@ class UserController extends Controller
         }
     }
 
+    public function create_ajax()
+     {
+         $level = LevelModel::select('level_id', 'level_nama')->get();
+ 
+         return view('user.create_ajax')
+         ->with('level', $level);
+     }
+
     public function tambah()
     {
         return view('user_tambah');
