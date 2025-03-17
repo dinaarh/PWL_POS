@@ -272,6 +272,12 @@ class UserController extends Controller
         return view('user.edit_ajax', ['user' => $user, 'level' => $level]);
     }
 
+    public function confirm_ajax(string $id){ 
+        $user = UserModel::find($id);
+
+        return view('user.confirm_ajax', ['user' => $user]);
+    }
+
     public function tambah()
     {
         return view('user_tambah');
