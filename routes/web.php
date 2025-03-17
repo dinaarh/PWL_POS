@@ -6,6 +6,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\SupplierController;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Route;
 
 /*
