@@ -54,13 +54,26 @@
 @endpush 
 
 @push('js') 
-  <script> 
+  <script>
+    function modalAction(url = '') { 
+       $('#myModal').load(url, function() { 
+         $('#myModal').modal('show'); 
+       });
+     } 
+     
+    var dataUser;
     $(document).ready(function() { 
-        var dataUser = $('#table_user').DataTable({ 
+        dataUser = $('#table_user').DataTable({ 
             // serverSide: true, jika ingin menggunakan server side processing 
             serverSide: true,      
             ajax: { 
-                "url": "{{ url('user/list') }}", 
+                "url": "{{ url('user/list') }}", function modalAction(url = '') { 
+       $('#myModal').load(url, function() { 
+         $('#myModal').modal('show'); 
+       });
+     } 
+     
+     var dataUser;
                 "dataType": "json", 
                 "type": "POST", 
                 "data": function (d) {
