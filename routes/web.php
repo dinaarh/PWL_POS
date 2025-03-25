@@ -40,6 +40,17 @@ Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::middleware(['auth'])->group(function() { // artinya semua route didalam group ini harus login dulu
     // masukkan semua route yang perlu autentikasi di sini
     Route::get('/', [WelcomeController::class, 'index']);
+    // Artinya semua route di dalam groupp ini harus punya role AD< (Amdinistrator)
+    Route::middleware(['authorizeUser:ADM'])->group(function () {
+        Route::get('/level', [LevelController::class, 'index']); // menampilkan halaman awal level
+        Route::post('/level/list', [LevelController::class, 'list']); // menampilkan data level dalam bentuk json untuk datables
+        Route::get('/level/create', [LevelController::class, 'create']); // menampilkan halaman form tambah level
+        Route::post('/level', [LevelController::class, 'store']); // menyimpan data level baru
+        Route::get('/level/{id}/edit', [LevelController::class, 'edit']); // menampilkan halaman form edit level
+        Route::put('/level/{id}', [LevelController::class, 'update']); // menyimpan data level yang diubah
+        Route::delete('/level/{id}', [LevelController::class, 'destroy']); // menghapus data level
+    });
+
     Route::group(['prefix' => 'user'], function () {
         Route::get('/', [UserController::class, 'index']);          // menampilkan halaman awal user
         Route::post('/list', [UserController::class, 'list']);      // menampilkan data user dalam bentuk json untuk datatables
@@ -59,23 +70,23 @@ Route::middleware(['auth'])->group(function() { // artinya semua route didalam g
     });
 
     //level
-    Route::group(['prefix' => 'level'], function() {
-        Route::get('/', [LevelController::class, 'index']);
-        Route::post('/list', [LevelController::class, 'list']);
-        Route::get('/create', [LevelController::class, 'create']);
-        Route::post('/', [LevelController::class, 'store']);
-        Route::get('/create_ajax', [LevelController::class, 'create_ajax']);
-        Route::post('/ajax', [LevelController::class, 'store_ajax']);
-        Route::get('/{id}', [LevelController::class, 'show']);
-        Route::get('/{id}/show_ajax', [LevelController::class, 'show_ajax']);
-        Route::get('/{id}/edit', [LevelController::class, 'edit']); 
-        Route::put('/{id}', [LevelController::class, 'update']);
-        Route::get('/{id}/edit_ajax', [LevelController::class, 'edit_ajax']); 
-        Route::put('/{id}/update_ajax', [LevelController::class, 'update_ajax']);
-        Route::get('/{id}/delete_ajax', [LevelController::class, 'confirm_ajax']);
-        Route::delete('/{id}/delete_ajax', [LevelController::class, 'delete_ajax']);
-        Route::delete('/{id}', [LevelController::class, 'destroy']);
-    });
+    // Route::group(['prefix' => 'level'], function() {
+    //     Route::get('/', [LevelController::class, 'index']);
+    //     Route::post('/list', [LevelController::class, 'list']);
+    //     Route::get('/create', [LevelController::class, 'create']);
+    //     Route::post('/', [LevelController::class, 'store']);
+    //     Route::get('/create_ajax', [LevelController::class, 'create_ajax']);
+    //     Route::post('/ajax', [LevelController::class, 'store_ajax']);
+    //     Route::get('/{id}', [LevelController::class, 'show']);
+    //     Route::get('/{id}/show_ajax', [LevelController::class, 'show_ajax']);
+    //     Route::get('/{id}/edit', [LevelController::class, 'edit']); 
+    //     Route::put('/{id}', [LevelController::class, 'update']);
+    //     Route::get('/{id}/edit_ajax', [LevelController::class, 'edit_ajax']); 
+    //     Route::put('/{id}/update_ajax', [LevelController::class, 'update_ajax']);
+    //     Route::get('/{id}/delete_ajax', [LevelController::class, 'confirm_ajax']);
+    //     Route::delete('/{id}/delete_ajax', [LevelController::class, 'delete_ajax']);
+    //     Route::delete('/{id}', [LevelController::class, 'destroy']);
+    // });
 
     //kategori
     Route::group(['prefix' => 'kategori'], function() {
