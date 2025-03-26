@@ -66,6 +66,18 @@
                     <p>Transaksi Penjualan</p>
                 </a>
             </li>
+        </li>
+        <li class="nav-item mt-4">
+            <a href="{{ url('/logout') }}" 
+               class="nav-link btn btn-danger btn-block d-flex align-items-center justify-content-center" 
+               style="background-color: #6e6a6a; color: white; border-radius: 8px; transition: all 0.3s ease-in-out; padding: 12px; font-size: 16px; font-weight: bold; border: 2px solid #6e6a6a;"
+               onmouseover="this.style.backgroundColor='#e63946'; this.style.transform='scale(1.05)';" 
+               onmouseout="this.style.backgroundColor='#6e6a6a'; this.style.borderColor='#6e6a6a'; this.style.transform='scale(1)';" 
+               onclick="return confirm('Apakah Anda yakin akan logout dari halaman ini?');">
+                <i class="nav-icon fas fa-sign-out-alt mr-2"></i>
+                <span>Logout</span>
+            </a>
+        </li>        
         </ul>
     </nav>
 </div>

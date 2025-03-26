@@ -1,7 +1,7 @@
 <!DOCTYPE html>
  <html lang="en">
  <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Pengguna</title>
  
@@ -20,10 +20,12 @@
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
-            <div class="card-header text-center"><a href="{{ url('/') }}" class="h1"><b>Admin</b>LTE</a></div>
+            <div class="card-header text-center">
+                <a href="{{ url('/') }}" class="h1"><b>Admin</b>LTE</a>
+            </div>
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                <form action="{{ url('login') }}" method="post" id="form-login">
+                <form action="{{ url('login') }}" method="POST" id="form-login">
                     @csrf
                     <div class="input-group mb-3">
                         <input type="text" id="username" name="username" class="form-control" placeholder="Username">
@@ -85,35 +87,35 @@
             }
         });
  
-        $(document).ready(function () {
-            $('#form-login').validate({
+        $(document).ready(function() {
+            $("#form-login").validate({
                 rules: {
                     username: {required: true, minlength: 4, maxlength: 20},
                     password: {required: true, minlength: 6, maxlength: 20}
                 },
-                submitHandler: function (form) { // Ketika valid, maka bagian yang akan dijalankan
+                submitHandler: function(form) { // Ketika valid, maka bagian yang akan dijalankan
                     $.ajax({
                         url: form.action,
                         type: form.method,
                         data: $(form).serialize(),
-                        success:: function (response) {
+                        success: function(response) {
                             if (response.status) { // jika sukses
                                 Swal.fire({
                                     icon: 'success',
-                                    title: 'Success',
+                                    title: 'Berhasil',
                                     text: response.message,
-                                }).then(function () {
-                                    window.location.href = response.redirect;
+                                }).then(function() {
+                                    window.location = response.redirect;
                                 });
                             } else { // jika error
                                 $('.error-text').text('');
-                                $.each(response.msgField, function (prefix, val) {
-                                    $('#error-' + prefix).text(val[0]);
+                                $.each(response.msgField, function(prefix, val) {
+                                    $('#error-'+prefix).text(val[0]);
                                 });
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Terjadi Kesalahan',
-                                    text: response.message,
+                                    text: response.message
                                 });
                             }
                         }
@@ -121,14 +123,14 @@
                     return false;
                 },
                 errorElement: 'span',
-                errorPlacement: function (error, element) {
+                errorPlacement: function(error, element) {
                     error.addClass('invalid-feedback');
                     element.closest('.input-group').append(error);
                 },
-                highlight: function (element, errorClass, validClass) {
+                highlight: function(element, errorClass, validClass) {
                     $(element).addClass('is-invalid');
                 },
-                unhighlight: function (element, errorClass, validClass) {
+                unhighlight: function(element, errorClass, validClass) {
                     $(element).removeClass('is-invalid');
                 }
             });
