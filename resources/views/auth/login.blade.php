@@ -37,7 +37,7 @@
                         <small id="error-username" class="error-text text-danger"></small>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -61,6 +61,9 @@
                         <!-- /.col -->
                     </div>
                 </form>
+                <div class="text-center mb-0 mt-4">
+                    Don't have an account? <a href="{{ url('register') }}" > Register here</a>
+                </div>
             </div>
             <!-- /.card-body -->
         </div>
