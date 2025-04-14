@@ -64,6 +64,7 @@ Route::middleware(['auth'])->group(function() { // artinya semua route didalam g
         Route::delete('/level/{id}', [LevelController::class, 'destroy']); // menghapus data level
         Route::get('/level/import', [LevelController::class, 'import']); // ajax form upload excel
         Route::post('/level/import_ajax', [LevelController::class, 'import_ajax']); // ajax import excel
+        Route::get('/level/export_excel', [LevelController::class, 'export_excel']); // export excel
     });
 
     Route::middleware(['authorize:ADM'])->group(function () {
@@ -84,6 +85,7 @@ Route::middleware(['auth'])->group(function() { // artinya semua route didalam g
         Route::delete('/user/{id}', [UserController::class, 'destroy']); // menghapus data user
         Route::get('/user/import', [UserController::class, 'import']); // ajax form upload excel
         Route::post('/user/import_ajax', [UserController::class, 'import_ajax']); // ajax import excel
+        Route::get('/user/export_excel', [UserController::class, 'export_excel']); // export excel
     });
 
     //kategori
@@ -105,6 +107,7 @@ Route::middleware(['auth'])->group(function() { // artinya semua route didalam g
         Route::delete('/kategori/{id}', [KategoriController::class, 'destroy']);
         Route::get('/kategori/import', [KategoriController::class, 'import']); // ajax form upload excel
         Route::post('/kategori/import_ajax', [KategoriController::class, 'import_ajax']); // ajax import excel
+        Route::get('/kategori/export_excel', [KategoriController::class, 'export_excel']); // export excel
     });
 
 
@@ -127,6 +130,7 @@ Route::middleware(['auth'])->group(function() { // artinya semua route didalam g
         Route::delete('/supplier/{id}', [SupplierController::class, 'destroy']);
         Route::get('/supplier/import', [SupplierController::class, 'import']); // ajax form upload excel
         Route::post('/supplier/import_ajax', [SupplierController::class, 'import_ajax']); // ajax import excel
+        Route::get('/supplier/export_excel', [SupplierController::class, 'export_excel']); // export excel
     });
 
 
