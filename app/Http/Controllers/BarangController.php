@@ -382,5 +382,9 @@ class BarangController extends Controller
             $no++;
         }
 
+
+        foreach (range('A','F') as $columnID) {
+            $sheet->getColumnDimension($columnID)->setAutoSize(true);   // set auto size untuk kolom
+        }
     }
 }
