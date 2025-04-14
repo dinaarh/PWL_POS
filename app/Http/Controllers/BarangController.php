@@ -345,4 +345,9 @@ class BarangController extends Controller
         } 
         return redirect('/'); 
     }
+
+    public function export_excel()
+    {
+         
+    }
 }
