@@ -367,5 +367,20 @@ class BarangController extends Controller
         $sheet->setcellValue('F1', 'Kategori');
  
         $sheet->getStyle('A1:F1')->getFont()->setBold(true);  // bold header
+
+        // loop data barang, masukkan ke sheet
+        $no = 1; // nomor data dimulai dari 1
+        $baris = 2; // baris data dimulai dari baris ke 2
+        foreach ($barang as $key => $value) {
+            $sheet->setcellValue('A' . $baris, $no);
+            $sheet->setcellValue('B' . $baris, $value->barang_kode);
+            $sheet->setcellValue('C' . $baris, $value->barang_nama);
+            $sheet->setcellValue('D' . $baris, $value->harga_beli);
+            $sheet->setcellValue('E' . $baris, $value->harga_jual);
+            $sheet->setcellValue('F' . $baris, $value->kategori->kategori_nama); // ambil nama kategori
+            $baris++;
+            $no++;
+        }
+
     }
 }
