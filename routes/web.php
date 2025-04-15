@@ -9,6 +9,7 @@ use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -160,5 +161,12 @@ Route::middleware(['auth'])->group(function() { // artinya semua route didalam g
         Route::post('/barang/import_ajax', [BarangController::class, 'import_ajax']); // ajax import excel
         Route::get('/barang/export_excel', [BarangController::class, 'export_excel']); // menampilkan halaman export barang
         Route::get('/barang/export_pdf', [BarangController::class, 'export_pdf']); // export pdf
+    });
+
+    Route::group(['prefix' => 'profil'], function () {
+        Route::get('/', [ProfilController::class, 'index'])->name('profil.index');
+        Route::get('/edit', [ProfilController::class, 'edit'])->name('profil.edit');
+        Route::post('/update', [ProfilController::class, 'update'])->name('profil.update');
+        Route::get('/hapus-foto', [ProfilController::class, 'deleteFoto'])->name('profil.deleteFoto');
     });
 });
