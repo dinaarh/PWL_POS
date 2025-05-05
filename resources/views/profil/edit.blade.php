@@ -6,7 +6,7 @@
         <div class="card-header bg-primary text-white">
             <h5 class="mb-0">Edit Profil</h5>
         </div>
-        <div class="card-body">
+        <div class="card-body" style="max-height: 500px; overflow-y: auto;">
             <form action="{{ route('profil.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
